@@ -7,6 +7,8 @@ shiori,yaya.dll
 
 craftman,Softie (Infinity System)
 craftmanurl,https://escortsrubicon.tumblr.com/
+homeurl,https://raw.githubusercontent.com/DragonMoth28/The_Escort/Ukagaka
+
 
 sakura.name,The Escort
 kero.name,The Saint
