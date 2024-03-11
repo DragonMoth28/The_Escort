@@ -83,7 +83,7 @@ OnHourTimeSignal //worm calms down on the hour.
 
 OnWindowStateRestore
 {
-	"(Oh, hello there)"
+	"\0\s[0](Oh, hello there)"
 }
 
 //note to self, why would i wanna use this
