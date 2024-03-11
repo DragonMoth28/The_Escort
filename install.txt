@@ -1,0 +1,7 @@
+charset,UTF-8
+type,ghost
+
+name,The Escort
+directory,The_Escort
+balloon0.directory,birdsballoon
+balloon1.directory,birdsballoon_simple

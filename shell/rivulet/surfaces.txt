@@ -1,0 +1,160 @@
+descript
+{
+	version,1
+}
+
+//—————————————————————————————— Sakura surfaces ——————————————————————————————
+//redid everything so surface-append works now i guess
+
+surface.append0-5
+{
+	collisionex0,head,region,collsion0.png,0,255,0
+	collisionex1,ears,region,collsion0.png,255,0,0
+	collisionex2,chest,region,collsion0.png,255,0,255
+	collisionex3,stomach,region,collsion0.png,0,255,255
+	collisionex4,laydownpls,region,collsion0.png,255,255,0
+	collisionex5,nose,region,collsion0.png,50,50,50
+	collisionex6,tail,region,collsion0.png,100,100,100
+	
+	animation1.interval,always
+	animation1.pattern0,interpolate,1100,0,270,-60
+	animation1.pattern1,interpolate,1101,150,270,-60
+	animation1.pattern2,interpolate,1102,150,270,-60
+	animation1.pattern3,interpolate,1103,150,270,-60
+	animation1.pattern4,interpolate,1104,150,270,-60
+	animation1.pattern6,interpolate,1105,150,270,-60
+	animation1.pattern7,interpolate,1106,150,270,-60
+	animation1.pattern8,interpolate,1107,150,270,-60
+	animation1.pattern9,interpolate,1108,150,270,-60
+	animation1.pattern10,interpolate,1109,150,270,-60
+	animation1.pattern11,interpolate,1108,150,270,-60
+	animation1.pattern12,interpolate,1107,150,270,-60
+	animation1.pattern13,interpolate,1106,150,270,-60
+	animation1.pattern14,interpolate,1105,150,270,-60
+	animation1.pattern15,interpolate,1104,150,270,-60
+	animation1.pattern16,interpolate,1103,150,270,-60
+	animation1.pattern17,interpolate,1102,150,270,-60
+	animation1.pattern18,interpolate,1101,150,270,-60
+	animation1.pattern19,interpolate,1100,150,270,-60
+	animation1.pattern20,interpolate,1100,1000,270,-60
+	
+	animation1201.interval,bind
+    animation1201.pattern0,overlay,1201,0,195,90
+    animation1202.interval,bind
+    animation1202.pattern0,overlay,1202,0,195,90
+	animation1203.interval,bind
+    animation1203.pattern0,overlay,1203,0,195,80
+    animation1204.interval,bind
+    animation1204.pattern0,overlay,1204,0,195,90
+}
+
+surface.append11-14
+{
+	collisionex0,head,region,collsion1.png,0,255,0
+	collisionex1,chest,region,collsion1.png,255,0,255
+	collisionex2,stomach,region,collsion1.png,0,255,255
+	collisionex3,laydownpls,region,collsion1.png,255,255,0
+	collisionex4,nose,region,collsion1.png,50,50,50
+	collisionex5,tail,region,collsion1.png,100,100,100
+	
+		
+	animation1.interval,always
+	animation1.pattern0,interpolate,1100,0,270,-60
+	animation1.pattern1,interpolate,1101,150,270,-60
+	animation1.pattern2,interpolate,1102,150,270,-60
+	animation1.pattern3,interpolate,1103,150,270,-60
+	animation1.pattern4,interpolate,1104,150,270,-60
+	animation1.pattern6,interpolate,1105,150,270,-60
+	animation1.pattern7,interpolate,1106,150,270,-60
+	animation1.pattern8,interpolate,1107,150,270,-60
+	animation1.pattern9,interpolate,1108,150,270,-60
+	animation1.pattern10,interpolate,1109,150,270,-60
+	animation1.pattern11,interpolate,1108,150,270,-60
+	animation1.pattern12,interpolate,1107,150,270,-60
+	animation1.pattern13,interpolate,1106,150,270,-60
+	animation1.pattern14,interpolate,1105,150,270,-60
+	animation1.pattern15,interpolate,1104,150,270,-60
+	animation1.pattern16,interpolate,1103,150,270,-60
+	animation1.pattern17,interpolate,1102,150,270,-60
+	animation1.pattern18,interpolate,1101,150,270,-60
+	animation1.pattern19,interpolate,1100,150,270,-60
+	animation1.pattern20,interpolate,1100,1000,270,-60
+
+	
+	animation1201.interval,bind
+    animation1201.pattern0,overlay,1201,0,195,90
+    animation1202.interval,bind
+    animation1202.pattern0,overlay,1202,0,195,90
+	animation1203.interval,bind
+    animation1203.pattern0,overlay,1203,0,195,80
+    animation1204.interval,bind
+    animation1204.pattern0,overlay,1204,0,195,90
+}
+
+surface.append40-43
+{
+	collisionex0,headc,region,collsion2.png,0,255,0
+	collisionex1,standuppls,region,collsion2.png,255,255,0
+	collisionex2,nosec,region,collsion2.png,50,50,50
+	collisionex3,tailc,region,collsion2.png,100,100,100
+	
+	animation1.interval,always
+	animation1.pattern0,interpolate,1100,0,0,200
+	animation1.pattern1,interpolate,1101,150,0,200
+	animation1.pattern2,interpolate,1102,150,0,200
+	animation1.pattern3,interpolate,1103,150,0,200
+	animation1.pattern4,interpolate,1104,150,0,200
+	animation1.pattern6,interpolate,1105,150,0,200
+	animation1.pattern7,interpolate,1106,150,0,200
+	animation1.pattern8,interpolate,1107,150,0,200
+	animation1.pattern9,interpolate,1108,150,0,200
+	animation1.pattern10,interpolate,1109,150,0,200
+	animation1.pattern11,interpolate,1108,150,0,200
+	animation1.pattern12,interpolate,1107,150,0,200
+	animation1.pattern13,interpolate,1106,150,0,200
+	animation1.pattern14,interpolate,1105,150,0,200
+	animation1.pattern15,interpolate,1104,150,0,200
+	animation1.pattern16,interpolate,1103,150,0,200
+	animation1.pattern17,interpolate,1102,150,0,200
+	animation1.pattern18,interpolate,1101,150,0,200
+	animation1.pattern19,interpolate,1100,150,0,200
+	animation1.pattern20,interpolate,1100,1000,0,200
+
+	
+	animation1201.interval,bind
+    animation1201.pattern0,overlay,1211,0,90,300
+    animation1202.interval,bind
+    animation1202.pattern0,overlay,1212,0,90,300
+	animation1203.interval,bind
+    animation1203.pattern0,overlay,1213,0,90,300
+    animation1204.interval,bind
+    animation1204.pattern0,overlay,1214,0,90,300
+}
+
+//specifically button leviathan for bootsequence but i don't think i need it outside of there
+surface200
+{
+
+}
+	
+	//Example code for a talk animation - uncomment if you want it
+	// animation1.interval,talk,4
+	// animation1.pattern0,alternativestart,(2,3,4)
+
+	
+	// animation3.interval,never
+	// animation3.pattern0,overlay,103,0,0,0
+	// animation3.pattern1,overlay,-1,200,0,0
+	
+	// animation4.interval,never
+	// animation4.pattern0,overlay,104,0,0,0
+	// animation4.pattern1,overlay,105,200,0,0
+	// animation4.pattern2,overlay,-1,200,0,0
+
+
+//—————————————————————————————— Kero surfaces ——————————————————————————————
+
+surface10
+{
+
+}

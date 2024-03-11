@@ -1,0 +1,119 @@
+OnFirstBoot : all
+{
+	//screaming into the void sea hoping this works after i compile it i worked so [EXPLICATIVE] hard on it-
+	stroke = 0
+	LastTalk = ""
+	nowshell = "Escort"
+	AskedAboutWorms = 0 //disables form change Void Worm
+	AskedAboutFish = 0 //disables form change Rivulet
+	Terrified = 0
+	Calmpet = 0
+	
+	"\t"
+	"\0\s[-1]"
+	
+	"(Your journey has come to an end just as Five Pebbles directed you to. As you stand at the edge of the massive pool of dark golden water, a sense of relief washes over you. You take a deep breath, closing your eyes, as you take a dive into the cool water.)\x[noclear]\n\n"
+	
+	"(A sense of calm.\w8\w8 Quiet.\w8\w8 Peace,\w6 even.)\x[noclear]\n\n"
+	
+	"(And when you open your eyes,\w6 you swim down,\w6 ever so deeper,\w6 you see many distant golden leviathan-like figures swimming quickly in the Void Sea,\w6 unaware of your presence.)\x[noclear]\n\n"
+	
+	"(Your journey has come to an end,\w6 and you are removed from the ebb and flow of time.\w8.\w8.\w8)\x[noclear]\n\n"
+	
+	"(.\w8.\w8.\w8until your silence and peace is broken by a figure swimming in the distance.\w8 Not a Void Worm,\w6 \s[0]but another Slugcat.)\x[noclear]\n\n"
+	
+	"(Record scratch.\w8 Wait,\w6 what?)\x[noclear]\n"
+	"(You do a double take,\w6 realising that,\w6 yeah,\w6 that's actually another Slugcat,\w6 avian in nature,\w6 swimming quickly towards you with little drag as if they were one of the massive golden leviathans\w4.\w4.\w4. Yet they're small,\w6 swimming like Rivulet in Shoreline's Sea nearby Looks To The Moon. They look rather excited somehow.)\x[noclear]\n\n"
+	
+	"(You make the realisation that you're not going to properly ascend anytime soon, but not out of any Karmatic Urge.\w8.\w8.\w8)\x[noclear]\n\n"
+	
+	"\s[2](But because of a territorial Slugcat.)"
+	
+	"\0\s[2]"
+}
+
+OnInitialize
+{	
+	if reference0 != "reload"
+	{
+		LastTalk = ""
+	}
+}
+
+OnBoot
+{
+	_temp = SHIORI3FW.UserBirthday
+	_user_birthday = "%(_temp[1])/%(_temp[2])"
+	_today = "%(month)/%(day)"
+	Terrified = 0
+	Calmpet = 0
+	
+	"\0\s[0]"
+	--
+	if _today == _user_birthday
+	{
+		"\0\s[0](The Escort doesn't know what a birthday is, especially since they weren't around when the Ancients did any of that. With that being said, Happy Birthday, %(username).)"
+	}
+		elseif _today == "1/1"
+	{
+		"\0\s[0](It's New Year's Day.\w8 Happy %(year))"
+	}
+	else
+	{
+			if nowshell == "Void Worm"
+		{
+			"\0\s[0](The Void Worm seems to stare at you blankly, looking like they want to talk but...\w8\s[13] they don't.)"
+			"\0\s[2](The Escort looks down at you happily as they swim back over to you.)"			
+		}
+			else
+		{
+			"\0\s[0](The Slugcat seems to stare at you blankly as it catches back up to you.)"
+			"\0\s[2](The Escort looks up at you as it catches back up to you, with a look as if they're smiling.)"
+		}
+	}
+}
+
+OnClose
+{
+			if nowshell == "Void Worm"
+		{
+			if Terrified == 1
+			{
+				"(The Void Worm leaves a bit too quickly... did you really hit them that hard?)"
+			}
+			else
+			{
+			"\0\s[13](The Void Worm looks down at you a little sadly, before it shakes itself off, swimming down deep into the Void Sea, leaving you stranded once more.)"
+			}
+		}
+			else
+		{
+			"\0\s[11](Their ears fold as you try and dive down back to find your own way. They'll catch up.)"
+		}
+	--
+	"\-"
+}
+
+OnShellChanged
+ { 
+	nowshell = reference0
+ 	if reference0 == "Escort" 
+ 	{		
+ 		"\0\s[0](Hee hoo bird)\e"
+		"\0\s[0](The Escort shakes themself off, their head-ribbons unfurling.)\e"
+ 	}
+ 	elseif reference0 == "Fish"
+ 	{		
+ 		"\0\s[0](Fish time)\e"
+		"\0\s[0](The Escort shakes themself off, gills flaring out.)\e"
+ 	}
+ 	elseif reference0 == "Void Worm"
+ 	{		
+ 		"\0\s[0](...I told you this was big.)\e"
+		"\0\s[0](The Escort shakes themself off, their massive size becoming rather apparent.)\e"
+ 	}
+ 	else
+ 	{
+	"\0\s[0](Oops! If you see this, this is an error OR that someone else has made a different shell. Probably an error.)\e"
+	}
+ }

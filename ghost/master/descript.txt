@@ -1,0 +1,18 @@
+charset,UTF-8
+
+name,The Escort
+type,ghost
+
+shiori,yaya.dll
+
+craftman,Softie (Infinity System)
+craftmanurl,https://escortsrubicon.tumblr.com/
+
+sakura.name,The Escort
+kero.name,The Saint
+balloon,Escort Balloon
+balloon,Escort Balloon - Simple
+
+icon,escort.ico
+
+sstp.allowunspecifiedsend,0

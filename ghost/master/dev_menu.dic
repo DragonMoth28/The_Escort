@@ -1,0 +1,47 @@
+OnWormpls : all
+{
+	"\t"
+	"\t\![*]\q[Toggle Fish,OnTogFish]\n\n"
+	"\![*]\q[Toggle Worm,OnTogWorm]\n\n"
+	if nowshell == "Void Worm"
+	{
+		"\![*]\q[Toggle Terror Smack,OnTogTerror]\n\n"
+	}
+}
+
+OnTogFish
+{
+	if AskedAboutFish == 0
+	{
+		AskedAboutFish = 1
+	}
+	elseif AskedAboutFish == 1
+	{
+		AskedAboutFish = 0
+	}
+}
+
+
+OnTogWorm
+{
+	if AskedAboutWorms == 0
+	{
+		AskedAboutWorms = 1
+	}
+	elseif AskedAboutWorms == 1
+	{
+		AskedAboutWorms = 0
+	}
+}
+
+OnTogTerror
+{
+	if Terror == 0
+	{
+		Terror = 1
+	}
+	elseif Terror == 1
+	{
+		Terror = 0
+	}
+}

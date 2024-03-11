@@ -1,0 +1,119 @@
+OnAiTalk
+{
+	if CHAIN.IDName == ""
+	{
+		LastTalk = RandomTalk
+	}
+	else
+	{
+		LastTalk = ChainTalk
+	}
+	LastTalk
+}
+
+RandomTalk : nonoverlap_pool
+{
+		if nowshell == "Void Worm"
+	{
+		"(...there might be a chance The Escort isn't gonna leave you alone. \s[40]Why not pet them?)"
+		"\0\s[4](The Escort looks back at the distant golden leviathans in the distance, \s[13]narrowing their eyes.)"
+		"\0\s[2](They swim around you, the currents of their massive body dragging you around as they swim past)"
+	}
+		elseif nowshell == "Escort"
+	{
+		"\(...there might be a chance the bird isn't gonna leave you alone. Why not pet them?)"
+		"\0\s[2](They swim around you, letting their head ribbons and swallowtail plumes trail behind them.)"
+		"(...are those feathers, or fur?)"
+	}
+		elseif nowshell == "Fish"
+	{
+		"(...there might be a chance the fish isn't gonna leave you alone. Why not pet them?)"
+		"\0\s[2](They swim around you, letting their tail trail behind them.)"
+	}
+		elseif nowshell == "Escort" || nowshell == "Fish"
+	{
+		"\0\s[11](The Escort looks around at the distant golden leviathans...)"
+	}
+		"\0\s[2](The Escort watches what you're doing with... interest? You can't tell.)"
+		"(The distant rumble of the swimming white and golden figures invites a sense of danger.)"
+		"(You realise you haven't even told The Escort your name.)\e:chain=namethoughts"
+		"(They don't even seem to realise how bored you feel...)"
+		"(...are they even able to speak?)"
+		"(Maybe turning into an Echo would be better than this.)"
+		"(You wonder how many cycles you've been here for.)"
+		{
+			"(You idly remember "
+			-- //dot dot dot...
+			"the lizards you tamed on your adventure. You remember how much of a family you were.)"
+			"your colony. You remember how much of a family you were.)"
+			"Five Pebbles. What a jerk, and yet how sad. You stole Neurons from him to give to Looks To The Moon."
+			"Looks To The Moon. She was happy to read you pearls all the time after you gave her more neurons."
+			"all of the food you had in your travels.)"
+			{
+				"the slugpups you met on your way to "
+				--
+				"Garbage Wastes. They wanted to play with the Garbage Worms)"
+				"Shaded Citadel. They wanted to eat the spiders.)"
+				"Outskirts. You had to avoid the Green Lizards extra hard.)"
+				"The Depths, of all things. How the pup got there is beyond you, and yet both of you are too afraid to find out.)"
+			}
+			--
+			"\w8\n\n(You realise how much you miss that feeling.)"
+		}
+		//Moon Pearl time
+		{
+			"(You remember a Pearl that you had Moon read...)\w8\n\n\f[italic,true]"
+			--
+			"('...through the mists of memory, your image dances, like the motes of dust, in a ray of sunlight, that pierces a dark room...')"
+			"('...restless nights filled with disturbing dreams, where millions glowing stars move menacingly in the distance...')"
+			"('A Void Fluid filtration system is used because if you take Void Fluid from close to the bedrock horizon, it will contain traces of rock and dirt. They bring in dirty fluid and then filter it to increase its purity. The other way is to put a pipe deeper, which works well for some time, but the pipe dissolves. Or is broken by some... force - no one really knows, you don't go down there and come back up.')"
+			"('There were some horror stories though... That if your ego was big enough, not even the Void Fluid could entirely cross you out, and a faint echo of your pompousness would grandiosely haunt the premises forever.')"
+			"('It is a memento of an age long past, where my kind once stood towering above the clouds. Toiling away at a great problem passed down to us from our creators. Debating, testing, calculating, researching. Thousands of us. Our creators chose to abandon us. Taking a gamble, and vanishing from the world. Leaving us behind to simply keep working on their problem.')"
+			--
+			"\f[italic,false]"
+		}
+		"(Four sliced fresh Bubble Fruit...)\e:chain=ChainCake"
+		"(Gallon pot of water brought to a boil...)\e:chain=ChainSoup"
+		"(Six boiled Eggbug Eggs...)\e:chain=ChainEgg"
+		"(You probably have forever to think.)"
+}
+
+namethoughts
+{{CHAIN
+	"(...and yet as you float in the seemingly bottomless Void Sea...)\e"
+	
+	"(...you realise it doesn't even matter.)\e:chain=end"
+}}CHAIN
+
+ChainCake //some kind of cake. whatever kind of cake this is.
+{{CHAIN
+	"(Two tens Powdered Popcorn Plant Kernels...)\e" //(panic) NOT TWO-TENTHS, TWO TENS. TWENTY.
+	
+	"(Three Dried Flashbang fruit...)\e"
+	
+	"(One cracked Eggbug egg...)\e"
+
+	"(...why do you know this?)\e:chain=end"
+}}CHAIN
+
+ChainSoup //my brain is soup
+{{CHAIN
+	"(Three diced Jetfish fins...)\e"
+	
+	"(Three and ten dried Monster Kelp leaves...)\e"
+	
+	"(Five Infant Centipede segments...)\e"
+	
+	"(...you realise that even if you're not hungry, you still have an apetite.)\e:chain=end"
+}}CHAIN
+
+ChainEgg //Galla suggested an egg salad I did my best.
+{{CHAIN
+	"(Sliced skin of a Glow Weed...)\e"
+
+	"(The slime of five Slime Moulds...)\e"
+
+	"(A finely diced half of a boiled Pole Plant...)\e"
+
+	"(...you continue to idly list off the ingredients of a meal your Colony Leader made your colony.)\e:chain=end"
+}}CHAIN

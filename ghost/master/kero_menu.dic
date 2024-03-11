@@ -1,0 +1,20 @@
+// KeroMenuGreetings : nonoverlap
+// {
+	// "\1(Panic button! So,\w6 you're either stuck somehow,\w6 or you got curious and touched the button which you shouldn't have (I don't blame you, I would have too).)\w8"
+// }
+
+// OnKeroMenu : all
+// {
+	// "\1\b2\![set,autoscroll,disable]"
+	// if SHIORI3FW.Eventid == "OnMouseDoubleClick"; KeroMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	// "\n\n\_q"
+	// "\![*]\q[Stuck AFTER Firstboot,OnStuckOops]\n\n"
+	// "\![*]\q[Need to replay the Boot Sequence,OnFirstBoot]?\n\n"
+	
+	// "\![*]\q[Nevermind,blank]"
+// }
+
+// OnStuckOops : all
+// {
+	// "\1Reloading.\w8.\w8.\w8\0\s[0]\1\s[10]\w8 Reloaded! Hopefully."
+// }

@@ -1,0 +1,284 @@
+SakuraMenuGreetings : nonoverlap
+{
+	if Terrified == 1
+	{
+		"\0\s[14](The Escort looks over at you with panic in their eyes, \0\s[0] before blinking briefly.)\n\n"
+
+	}
+	else
+	{
+		"\0\s[0](The Escort looks over at you)\n\n"
+	}
+}
+
+OnSakuraMenu : all
+{
+	"\t\b2\![set,autoscroll,disable]"
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; SakuraMenuGreetings
+	"\_q"
+	
+	"\![*]\q[(Talk to me),OnAiTalk]\n"
+	if LastTalk != ""; "\![*]\q[(Repeat last message),OnLastTalk]\n\n"
+	
+	"\![*]\q[(Change talk rate),OnTalkRateMenu]\n\n"
+	"\![*]\q[Hey Escort...,OnQuestions]\n\n"
+	if username == "Benji"
+	{
+		"\![*]\q[Dev Mode,OnWormpls]\n\n"
+	}
+
+	
+	"\![*]\q[(Nevermind),blank]"
+}
+
+OnLastTalk
+{
+	LastTalk
+}
+
+OnTalkRateMenu : all
+{	
+	_talkrate = "Off"
+	if aitalkinterval == 30; _talkrate = "30 seconds"
+	elseif aitalkinterval == 60; _talkrate = "1 minute"
+	elseif aitalkinterval == 180; _talkrate = "3 minutes"
+	elseif aitalkinterval == 300; _talkrate = "5 minutes"
+	elseif aitalkinterval == 600; _talkrate = "10 minutes"
+	
+	"\t\0\s[0]\b2\![set,autoscroll,disable]\_q"
+	"Current interval: %(_talkrate)\n\n"
+	
+	"\![*]\q[Off,OnTalkRateChange,0]\n"
+	"\![*]\q[30 seconds,OnTalkRateChange,30]\n"
+	"\![*]\q[1 minute,OnTalkRateChange,60]\n"
+	"\![*]\q[3 minutes,OnTalkRateChange,180]\n"
+	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
+	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
+	"\n"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,blank]"
+}
+
+OnTalkRateChange
+{
+	aitalkinterval = TOINT(reference0)
+}
+
+
+OnQuestions : all
+{
+	"\t\0\_q"
+	"\![*]\q[Why won't you let me go,OnLocation]?\n"	
+	if AskedAboutWorms == 0
+	{
+		"\![*]\q[About the Void Worms,OnHeyWaitWhy]...\n" //replaced by OnShellChange after activation
+	}
+	else
+	{
+		"\![*]\q[Can you take a different appearance,OnShellChange]?\n" //hidden until OnHeyWaitWhy is activated
+	}
+	"\n"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,blank]\x[noclear]"
+
+}
+
+
+OnHeyWaitWhy : all
+{
+	"\t(You motion towards the distant leviathans and then towards the other slugcat, and The Escort \s[11]tilts their ears back, their joyful demeanour falling for just a bit, as if contemplating.)\x[noclear]\n\n"
+	
+	"\s[12](Uh oh, here we go.)\x[noclear]\n\n"
+	
+	"\s[11](The Escort looks over at the distant leviathans as well, before making a sighing motion, nodding a bit solemnly...)\x[noclear]\n"
+	"(Almost if they didn't want you to know that information, even though it was going to eventually be obvious, floating forever in the Void Sea.)\x[noclear]\n\n"
+	
+	"\s[2](But they perk up, looking up at you excitedly, tail wagging, as if wanting to show you something else.)\x[noclear]\n\n"
+	
+	
+	"(You can now ask them to change into their Void Worm forme, and what of this something else...?)"
+	
+	AskedAboutWorms = 1
+}
+
+OnLocation
+{
+	"\t"
+	if nowshell == "Void Worm"
+	{
+		"\s[14]\w8\w8\w8\w8\s[13]\w8\w8"
+	}
+	else
+	{
+		"\s[11]\w8\w8\w8\w8"
+	}
+	--
+	"(You tilt your head as you ask the question nonverbaly, and The Escort looks away, somewhat... sadly, not wanting to answer the question..."
+	--
+	if nowshell == "Void Worm"
+	{
+		" but... Maybe they should. But not now.)"
+	}
+	else
+	{
+		")"
+	}
+}
+		
+
+OnShellChange : all //i have a headache
+{
+	"\t(The Escort looks over at you, a bit more curious)"
+		"\n\n"
+		if nowshell == "Fish" || nowshell == "Void Worm"
+		{
+			"\![*]\q[Can you change to normal?,OnWoahBird]\n\n"
+		}
+		if nowshell == "Escort" || nowshell == "Void Worm"
+		{
+			if AskedAboutWorms == 1
+			{	
+				if AskedAboutFish == 0
+				{
+				"\![*]\q[What else can you change into?,OnFishForm]\n\n"
+				}
+				elseif AskedAboutFish == 1
+				{
+				"\![*]\q[Can you change into Rivulet?,OnFishForm]\n\n"
+				}
+			}
+		}
+		if AskedAboutWorms == 1
+		{
+			if nowshell == "Escort" || nowshell == "Fish"
+			{
+			"\![*]\q[Can you change into the Void Worm?,OnNoWhatWhy]\n\n"
+			}
+		}
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,blank]"
+}
+
+OnWoahBird
+{
+	"\t"
+	--
+		if nowshell == "Void Worm"
+		{
+			Terrified = 0
+			--
+			"\s[2](The Escort nods, a bit too excitedly, before shaking themself off and reforming into their smaller form)\w8\w8\![change,Shell,Escort]"
+		}
+		elseif nowshell == "Fish"
+		{
+			"\s[2](The Escort nods, before shaking themself off)\w8\w8\![change,Shell,Escort]"
+		}
+}
+
+OnFishForm
+{
+	"\t"
+	--
+	if nowshell == "Void Worm"
+		{
+			Terrified = 0
+			--
+			"\s[2](The Escort nods, a bit too excitedly, before shaking themself off and reforming into their smaller form)\w8\w8\![change,Shell,Fish]"
+		}
+	else
+		{
+			if AskedAboutFish == 0
+			{
+				AskedAboutFish = 1
+				--
+			}
+			"\s[2](The Escort nods, before shaking themself off)\w8\w8\![change,Shell,Fish]"
+		}
+}
+
+OnNoWhatWhy : all //poor bird
+{
+	"\t\s[11](The Escort's eyes widen and become small as if a warning. This shell is going to be large. Are you sure?)\n\n\_q"
+			"\![*]\q[Yes,OnProceed]\n\n			\![*]\q[Nevermind,blank]"
+}
+
+OnProceed
+{
+	"\t(The Escort stares at you for a moment, worried, before changing forms...)\w8\w8\![change,Shell,Void Worm]"
+}
+
+
+
+
+
+//DEV STUFF
+OnWormpls : all
+{
+    "\t"
+    "\![*]\q[Toggle Fish,OnTogFish] %(AskedAboutFish)\n"
+    "\![*]\q[Toggle Worm,OnTogWorm] %(AskedAboutWorms)\n"
+
+	if nowshell == "Void Worm"
+	{
+    "\![*]\q[Toggle Terror,OnTogTerror] %(Terrified)\n"
+		if Terrified == 1
+		"Pet = %(Calmpet)"
+	}
+	"\n\![*]\q[Reset All,OnResetTriggers]\n"
+    "\n\![*]\q[(Nevermind),blank]"
+}
+
+OnTogFish
+{
+	if AskedAboutFish == 0
+	{
+		AskedAboutFish = 1
+	}
+	elseif AskedAboutFish == 1
+	{
+		AskedAboutFish = 0
+	}
+}
+
+
+OnTogWorm
+{
+	if AskedAboutWorms == 0
+	{
+		AskedAboutWorms = 1
+	}
+	elseif AskedAboutWorms == 1
+	{
+		AskedAboutWorms = 0
+	}
+}
+
+OnTogTerror
+{
+	if Terrified == 0
+	{
+		Terrified = 1
+	}
+	elseif Terrified == 1
+	{
+		Terrified = 0
+		Calmpet = 0
+	}
+}
+
+OnResetTriggers : all
+{
+	"(This will reset all triggers and change Escort into the Master Shell. If you are on another shell, Escort will still act as if their shell has changed by way of the shell switch dialogue, though. Continue?)\n"
+	"\![*]\q[Yes,OnResetConfirm]  \![*]\q[No,OnWormpls]"
+}
+
+OnResetConfirm : all
+{
+	AskedAboutFish = 0
+	AskedAboutWorms = 0
+	Terror = 0
+	Calmpet = 0
+	LastTalk = ""
+	stroke = 0
+	if nowshell == "Void Worm" || nowshell == "Fish"
+	{
+	"\![change,Shell,Escort]"
+	}
+}

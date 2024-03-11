@@ -1,0 +1,280 @@
+OnTranslate
+{
+	_talk = reference0
+	
+	//This is what makes %(embedded_elements) work in script input
+	if reference1 == "" && reference2 == "" //If this is from the input box
+	{ //send input box : no event (ref2) , no special flag (ref1)
+		_talk = EVAL('"' + REPLACE(_talk,'"','""') + '"')
+	}
+	
+	//If you want to add anything to OnTranslate, like text replacement, I would put it after this point, generally. Just make sure it's before the TOSTR(_talk)
+	
+	TOSTR(_talk)
+}
+
+
+
+//This is just here so you can use anchors to link to websites if you want. You can link to websites with normal menu choice tags! If you do, a handy URL preview will show up in the balloon!
+OnAnchorSelect
+{
+	if "http://" _in_ reference0 || "https://" _in_ reference0; "\j[""%(reference0)""]"
+}
+
+//Hotkeys
+OnKeyPress
+{
+	if reference0 == "f1"; "\![open,readme]"
+	elseif reference0 == "t"; OnAiTalk
+	elseif reference0 == "r"; OnLastTalk
+}
+
+//Happens about 30 seconds after a script ends, by default, to bring them back to normal poses
+OnSurfaceRestore
+{
+	if Terrified == 1
+	{
+		"\0\s[12]"
+		"\0\s[13]"
+		"\0\s[14]"
+	}
+	else
+	{
+		"\0\s[0]"
+		"\0\s[2]"
+		"\0\s[40]"
+	}
+	"\0\s[11]"
+}
+
+OnSecondChange
+{
+	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
+	_since = GETSECCOUNT - SHIORI3FW.TalkEndTime
+	
+	_balloonisopen = "balloon" _in_ var.req.value[ASEARCH("Status",var.req.key)]
+	
+	if _since % 15 == 0 && !_balloonisopen
+	{
+		//If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
+		if RAND(10) == 0; OnSurfaceRestore
+		--
+		if Calmpet >= 4
+		{
+			Terrified = 0
+			Calmpet = 0
+			--
+			"\0\s[0](The Void Worm seems to calm down... Maybe it's best if you don't hit them...)"
+		}
+	}
+}
+
+OnHourTimeSignal //worm calms down on the hour. 
+{
+	if nowshell == "Void Worm"
+	{
+		if Terrified == 1
+		{
+			Terrified = 0
+			"\0\s[0](The Void Worm seems to calm down... Maybe it's best if you don't hit them...)"
+		}
+	}
+}
+
+OnWindowStateRestore
+{
+	"(Oh, hello there)"
+}
+
+//note to self, why would i wanna use this
+//Network update url. Make sure you have a / on the end of the url or it will give a warning every time users try to update! If you don't plan to use network updates you can remove this
+//IF YOU'RE USING GITHUB FOR NETWORK UPDATES: DO NOT USE github.io URLS! It will cause you pain and suffering. USE raw.githubusercontent!!!
+//To get the raw.githubusercontent link super easy:
+//• Open your ghost's repo online
+//• navigate to the ghost's folder (the top level one, with install.txt, readme.txt, etc)
+//• Click on install.txt, or another text file on that level
+//• Once on that page, click the "raw" button. You should see the url now starts with raw.githubusercontent
+//• Copy that url exactly as is, but *leave off the "install.txt" or whatever file name at the end.*
+//Tada! That's your url! Make sure you test it! The dev palette and script/network log can help with that
+On_homeurl
+{
+	""
+}
+
+
+//—————————————————————————————— Right click menu links ——————————————————————————————
+
+//Takes an array of alternating names and urls, and formats them for use with the right click menu
+FormatLinks : all
+{
+	for _i = 0; _i < ARRAYSIZE(_argv); _i++
+	{
+		_argv[_i] //Add the link/title
+		//Alternate between adding %ASC(1) or %ASC(2)
+		if _i % 2 == 1; "%ASC(2)"
+		else; "%ASC(1)"
+	}
+}
+
+On_sakura.recommendsites
+{
+	FormatLinks(recommendsites_sakura)
+}
+
+//These are the websites linked in the top option of the sakura's right click menu. The format is simple; write the label of the link on the left followed by a semicolon, and then on the right, the url to link to. These should be separate strings.
+recommendsites_sakura : array
+{
+	"Rain World Steam";	"https://store.steampowered.com/app/312520/Rain_World/"
+	"Outsider Wiki Page";	"https://rainworldmods.miraheze.org/wiki/Outsider"
+	"Ukagaka Dream Team Wiki";	"https://ukagakadreamteam.com/wiki/home"
+	"Rain World Wiki";	"https://rainworld.miraheze.org/wiki/Rain_World_Wiki"
+	"Rubicon Tumblr Ask-RP-Blog";	"https://escortsrubicon.tumblr.com/"
+}
+
+On_sakura.portalsites 
+{
+	FormatLinks(portalsites_sakura)
+}
+
+On_shellrootbutton.visible
+{
+    "0"
+}
+On_shellrootbutton.caption
+{
+    "Use Escort's Shell Switch"
+}
+
+On_sakura.portalbuttoncaption
+{
+	"Meme Stash"
+}
+
+On_balloon_tooltip
+{
+	if reference0 == "Hey Escort..." || reference0 == "What else can you change into"
+	{
+		"(A little tilt of your head...)"
+	}
+	if reference0 == "Can you take a different appearance"
+	{
+		"(A gentle smile and an ear flit...)"
+	}
+	if reference0 == "About the Void Worms"
+	{
+		"(You motion towards the distant leviathans and then towards The Escort...)"
+	}
+	if reference0 == "Why won't you let me go"
+	{
+		"(A small frown and a head tilt...)"
+	}
+}
+
+portalsites_sakura : array
+{
+	"You know what, fuck you (un-horses your plinko)"; "https://maxwell-grimm.itch.io/horse-plinko"
+	"oh no";	"https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Ffanart-i-drew-of-slug-cat-dying-in-a-glue-trap-v0-02581cmqnvqa1.jpg%3Fs%3D763461de85adb0b7172c2b4e1060693f481f9766"
+	"What, did you expect anything interesting? This has turned into a meme stash."; ""
+
+}
+
+On_kero.recommendsites
+{
+	FormatLinks(recommendsites_kero)
+}
+
+recommendsites_kero : array
+{
+	"You're not supposed to be here."
+}
+
+
+they
+{
+	if SHIORI3FW.UserSex == "male"; "he"
+	elseif SHIORI3FW.UserSex == "female"; "she"
+	else; "they"
+}
+
+them
+{
+	if SHIORI3FW.UserSex == "male"; "him"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "them"
+}
+
+their
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "their"
+}
+
+theirs
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "hers"
+	else; "theirs"
+}
+
+themself
+{
+	if SHIORI3FW.UserSex == "male"; "himself"
+	elseif SHIORI3FW.UserSex == "female"; "herself"
+	else; "themself"
+}
+
+//%(they) %(p('are','is'))
+//You can change the name of this function if you want! I kept it short so it's fast to type
+p
+{
+	if SHIORI3FW.UserSex == "undef"; _argv[0] //they are
+	else; _argv[1] //he is/she is
+}
+
+/*
+
+An example of the above setup:
+"%(they) %(p('were','was')) looking for that earlier, I'll ask if %(they)'%(p('ve','s')) found it."
+
+If using they, the %(p) functions will return the first word specified, resulting in:
+"they were looking for that earlier, I'll ask if they've found it."
+
+If not using they, for example if using she, it will return the second specified word instead, resulting in:
+"she was looking for that earlier, I'll ask if she's found it."
+
+With this function, you can quickly customize words that need to change based on whether it should be singular or plural. Just remember; the %(p) function is set up so that the first word you specify matches with the 'they' labels used on the pronoun functions. You can always switch that around if you like, too.
+
+*/
+
+//This just makes %(username) match with the username determined by the SSP prefs, rather than having to use the %username environment variable which is *not* the same and which you can't do things like TOUPPER to.
+//If you want to have the user be able to set a nickname or something, you may want to change username to a variable instead and get rid of this!
+username
+{
+	SHIORI3FW.UserName
+}
+
+OnTranslateInternal.AutoPauses
+{
+	_talk = _argv[0]
+	
+	if "\![no-autopause]" !_in_ _talk
+	{
+		/*
+		//Additional options if you want ellipsis to have little pauses between each dot. Personally, I think I want to do that manually, for when I want a particular flavor.
+		
+		_talk = REPLACE(_talk,"... ",".\w2.\w2.\w8 ") //Ellipsis
+		_talk = REPLACE(_talk,"..? ",".\w2.\w2?\w8 ") //Question mark + ellipsis
+		_talk = REPLACE(_talk,"..! ",".\w2.\w2!\w8 ") //Exclamation point + ellipsis
+		*/
+		
+		_talk = REPLACE(_talk,", ",",\w4 ") //Comma
+		_talk = REPLACE(_talk,". ",".\w8 ") //Period
+		_talk = REPLACE(_talk,"? ","?\w8 ") //Question mark
+		_talk = REPLACE(_talk,"! ","!\w8 ") //Exclamation point
+		//_talk = REPLACE(_talk,"- ","-\w8 ") //Dash - This one seems to happen a lot when I don't want it, so I am commenting it out
+		_talk = REPLACE(_talk,"; ",";\w4 ") //Semicolon
+	}
+	
+	_talk
+}

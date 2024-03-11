@@ -1,0 +1,97 @@
+charset,UTF-8
+type,balloon
+use_self_alpha,1
+use_input_alpha,1
+//overlay_outside_balloon,1
+
+
+//——— Basic information ———
+name,Escort Balloon
+craftman,Softie (Infinity System)
+craftmanurl,https://escortsrubicon.tumblr.com/
+homeurl,
+
+
+//——— Display area ———
+origin.x,0
+origin.y,0
+
+validrect.left,57
+validrect.top,95
+validrect.right,280
+validrect.bottom,-100
+
+wordwrappoint.x,-20
+
+//——— Font ———
+font.name,Calibri
+font.height,14
+
+font.color.r,252
+font.color.g,229
+font.color.b,129
+
+anchor.font.color.r,246
+anchor.font.color.g,078
+anchor.font.color.b,104
+
+cursor.font.color.r,157
+cursor.font.color.g,128
+cursor.font.color.b,198
+
+cursor.style,underline
+
+disable.font.color.r,125
+disable.font.color.g,119
+disable.font.color.b,091
+
+
+//——— Arrows ———
+arrow0.x,283
+arrow0.y,92
+
+arrow1.x,283
+arrow1.y,-94
+
+
+//——— Online marker ———
+onlinemarker.x,64
+onlinemarker.y,-60
+
+onlinemarker.interval,600
+
+
+//——— SSTP ———
+sstpmarker.x,58
+sstpmarker.y,-94
+
+sstpmessage.font.name,Calibri
+sstpmessage.font.height,11
+
+sstpmessage.x,73
+sstpmessage.xr,-95
+sstpmessage.y,-93
+
+sstpmessage.font.color.r,252
+sstpmessage.font.color.g,229
+sstpmessage.font.color.b,129
+
+68,269,157,281
+//——— Number ———
+number.font.name,Calibri
+number.font.height,11
+
+number.xr,240
+number.y,-75
+
+number.font.color.r,150
+number.font.color.g,150
+number.font.color.b,150
+
+
+//——— Input box ———
+communicatebox.x,8
+communicatebox.y,8
+
+communicatebox.width,283
+communicatebox.height,20

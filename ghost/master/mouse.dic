@@ -1,0 +1,285 @@
+//Separate from the menus because you could put other interactions here, like poking or booping or punching or asking about various hotspots
+OnMouseDoubleClick
+{
+	if reference5 == 0 //reference5 is the mouse button being clicked, in this case a left click
+	{
+		if reference4 != ""
+		{
+			OnClick
+		}
+		elseif reference3 == 0
+		{
+			OnSakuraMenu
+		}
+		elseif reference3 == 1
+		{
+			OnKeroMenu
+		}
+	}
+}
+
+OnMouseMove
+{
+	if reference4 != ""
+	{
+		stroke++
+		
+		if stroke % 40 == 0
+		{
+			if reference3 == 0; OnMouseMove.Sakura
+			else; OnMouseMove.Kero
+		}
+	}
+}
+
+OnMouseMove.Sakura
+ {
+	if reference4 != ""
+ 	{
+ 		stroke++
+ 		if stroke >= 40
+		{
+ 			stroke = 0 
+			if reference4 == "head"
+ 			{
+				if nowshell == "Void Worm"
+				{
+					"\0(...that might be a bit too high for you.)\e"
+				}
+				else
+				{
+					"\0\s[2](The Escort lets out a little purr~)\e"
+				}
+ 			}
+			if reference4 == "ears"
+ 			{
+				if nowshell == "Fish"
+				{
+					"(...why are they weirdly damp? And not in a normal way, either.)\e"
+				}
+				else
+				{
+					"(Despite being in the Void Sea, they're still fluffy.)\e"
+				}
+ 			}
+ 			elseif reference4 == "chest"
+ 			{
+					"\0\s[2](Go on, you know you wanna touch the floof)\e"
+					"\0\s[2](Go on, give them stomach rubs)\e"
+ 			}
+			elseif reference4 == "neck"
+			{
+				if nowshell == "Void Worm"
+				{
+				if Terrified == 1
+					{
+						Calmpet += 1
+					}
+					--
+					"\0\s[2](Rub rub)\e"
+					"\0\s[2](You reach up to pet the massive Void Worm's neck.)\e"
+				}
+			}
+			elseif reference4 == "stomach"
+ 			{
+				if nowshell == "Void Worm" //under the glowy light thing is just a mass of feelers but no-one'll ever know that
+				{
+				if Terrified == 1
+					{
+						Calmpet + 1
+					}
+				--
+					"\0\s[2](You don't even know what you're touching, and yet The Escort appreciates it anyway.)\e"
+					"\0\s[2](The light it gives off is bright, and yet you realise you're not even acting as if it is.)\e"
+
+				}
+				else
+				{
+					 "\0\s[2](Ohhh yeah, that's the good stuff)\e"
+				}
+
+ 			}
+			elseif reference4 == "wingo"
+ 			{
+ 				"\0\s[11]\e"
+ 			}
+			elseif reference4 == "wingi"
+ 			{
+ 				"\0\s[30]\e"
+ 			}
+				//laying
+				//
+			elseif reference4 == "headc"
+ 			{
+				if nowshell == "Void Worm"
+				{
+					if Terrified == 1
+					{
+						Calmpet + 1
+						"\0\s[40](The Worm hesitated before \s[41]closing its eyes...)\e"
+					}
+					else
+					{
+						"\0\s[41](Pat pat~)\e"
+					}
+				}
+				else
+				{
+					"\0\s[42](Pat pat~)\e"
+				}
+ 			}
+ 			elseif reference4 == "wingc" 
+ 			{
+ 				"\0\s[44]\e"
+ 			}
+			 elseif reference4 == "wingsc" 
+ 			{
+ 				"(The Escort looked annoyed at you.)\e"
+				"(...are you done yet? No? Well, knock it off.)\e"
+				"\s[42](STOP IT.)\e"
+ 			}
+			elseif reference4 == "tailc"
+ 			{
+				"\0\s[42](Soft and fluffy...)\e"
+			}
+				//Quick surface triggers so i can get to them easier
+				//
+				elseif reference4 == "laydownpls" || reference4 == "neckdownpls" 
+ 			{
+				if nowshell == "Void Worm"
+				{
+					if Terrified == 1
+						{
+							Calmpet + 1
+						}
+					--
+					"\0(The Escort \s[40]cranes their neck down so you can pat their head.)\e"
+				}
+				else
+				{
+					"\0\s[40](flop)\e"
+				}
+			}
+				elseif reference4 == "standuppls" || reference4 == "neckuppls"
+ 			{
+				if nowshell == "Void Worm"
+				{
+					"\0\s[0]\e" //just in case i need to replace it for any reason
+				}
+				else
+				{
+					"\0\s[0]\e"
+				}
+			}
+				if reference4 == "tail"
+			{
+				if nowshell == "Fish"
+				{
+					"(Smooth and damp...)\e"
+				}
+				else
+				{
+					"(Soft and fluffy...)\e"
+				}
+ 			}
+			elseif reference4 == "nose"
+ 			{
+ 				"(You rub their nose gently, and they let out a \s[12]little sneeze)"
+ 			}
+		}
+	}
+ }
+
+
+OnClick //uh oh i made it work
+ {
+	 	if reference4 == "nose" 
+		{
+			"\s[2](Boop!)"
+
+		}
+		elseif reference4 == "head"
+			{
+				if nowshell == "Void Worm"
+					{
+						Terrified = 1
+						--
+						"\0\s[14](The Escort reels back their head in a wince)\w8\w8\n"
+						--
+						"(You didn't even hit them that hard.)"
+						"(Their eyes were wide and their pupils small as they stare down at you, as if having a mild panic attack.)"
+						"(...why do they look so hurt?)"
+					}
+			}
+			elseif reference4 == "headc" //specifically asked them to come down just to hit them ?? why ??
+			{
+				if nowshell == "Void Worm"
+					{
+					Terrified = 1
+					--
+					"\0\s[14](The Escort reels back their head in a wince)\w8\w8\n"
+					--
+					"(They stare down at you, terrified...)"
+					"(...why did you do that?)"
+					}
+				else
+				{
+				"\0\s[3](The Escort lets out a little squeak, spooked.)"
+				}
+			}
+		else
+		{
+			OnSakuraMenu
+		}
+}
+ 
+
+// OnMouseMove.Kero
+// {
+	// if reference4 == "head"
+	// {
+		// "\1\s[10]If you see this, how??? There's no Kero to be found!"
+	// }
+// }
+
+OnMouseLeaveAll
+{
+	stroke = 0
+}
+
+OnNeedlePoke
+{
+	if reference0 == 0 //Sakura
+	{
+		if nowshell == "Void Worm"
+		{
+			"\s[11](The "
+			--
+			if reference1 == "Spear"
+			{
+			"Spear"
+			}
+			else
+			{
+			"Needle"
+			}
+			--
+			" doesn't stick into the thick skin of the leviathan-like body as The Escort looks down at you, unamused.)"
+		}
+		else
+		{
+			if reference1 == "Syringe"
+			{
+				"\s[41](NOPE, NOPE, NOPE, NOPE-)"
+			}	
+			elseif reference1 == "Spear"
+			{
+				"\s[41](Oh, that IS a spear- The Escort ducks away a little too quickly in sheer panic, wondering how you even got a spear DOWN here.)"
+			}
+			else
+			{
+				"\s[41](The Escort ducks away. Maybe that looks too much like a spear-)"
+			}
+		}
+	}
+}
