@@ -1,12 +1,13 @@
 Charset,UTF-8
 __system_settings_version__,2
 balloon,C:\Users\rsshe\Desktop\why won't you work right you piece of\balloon\birdsballoon_simple\
-shiori.debugnotify,0
+Char1.balloon.isleft,1
+Char0.centery,768
+Char0.balloon.isleft,1
 Char.VirtualDesktop,933e343b-f9f9-43e4-9ad7-b660ffce6fb6
-Char0.center,1251
-shell,shell\worm\
-FirstBoot,booted
-Char1.center,466
-shell.ischanged.2,1
-update.lastexec,763504797
+Char0.center,884
+Char1.centery,769
+Char1.center,516
+seriko.scaling.percent.x,100
+seriko.scaling.percent.y,100
 __system_written_flag_do_not_remove__,written

@@ -1,6 +1,7 @@
 Charset,UTF-8
 install,763500550
-surfacecount,37
+surfacecount,28
+update_result,NG(md5 miss:ghost/master/descript.txt)
 firstboot,763500558
-commitmemorysize,4441240
-lastboot,763500558
+commitmemorysize,9007178
+lastboot,763601548
