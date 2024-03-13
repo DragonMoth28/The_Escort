@@ -57,7 +57,7 @@ file,ghost/master/kero_menu.dic75bb1bb4db17c3646ddfbafa5cd56b54size=711date=2
 file,ghost/master/meta.dic7c72f2a910a43fdff5a59ac9eb8e7d55size=4066date=2024-03-12T18:43:40
 file,ghost/master/mouse.dic4cb8bf9b9a69b902408b17732a530ca6size=5472date=2024-03-03T23:07:36
 file,ghost/master/other.dic280d613e006fbf85e2871e72f2abdf5csize=8319date=2024-03-11T14:59:16
-file,ghost/master/sakura_menu.dicf455e0b2f8e5d83efc2ef8a414dff12asize=6156date=2024-03-03T23:29:24
+file,ghost/master/sakura_menu.dic59c0ee2d6fff4c5266255babadc1bea6size=6163date=2024-03-12T19:18:29
 file,ghost/master/word.dic120d6f6ab62796075e7c06fd89a576d5size=1599date=2024-02-05T21:30:51
 file,ghost/master/yaya.dllfa8bac5d6d7346524317f731dc63803dsize=880640date=2024-02-05T21:30:51
 file,ghost/master/yaya.txt5f4f90dce24192679ee2a3bcf54bad1dsize=701date=2024-02-05T21:30:51
@@ -68,7 +68,7 @@ file,ghost/master/yaya_base/optional.dicff4da728a656a8aa6a38939e654c51f2size=9
 file,ghost/master/yaya_base/shiori3.dicac4750d7081a6607ac1c26184677020asize=55020date=2024-02-05T21:30:51
 file,ghost/master/yaya_emerg.txt989601a00fa715b67cb4c3fab7844789size=588date=2024-02-05T21:30:51
 file,install.txt5e790642fcee2f22c9ce8bfd198ce95csize=133date=2024-03-01T16:24:51
-file,readme.txtd42d18978cc87d88627fb161e7e98ca8size=1285date=2024-02-26T22:11:46
+file,readme.txt9e9186da9357b0f961bbc77161c48490size=1211date=2024-03-12T19:19:54
 file,shell/master/collsion0.png661a056781ace4f4f68c43022d9c7974size=7069date=2024-02-15T12:50:54
 file,shell/master/collsion1.png7285ce9db1f2fc605d3e19f6abd0282asize=6856date=2024-02-15T12:57:56
 file,shell/master/collsion2.pnge880a54cb5938c9c5679d49d8f58667esize=7941date=2024-02-15T13:56:54

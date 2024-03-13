@@ -5,6 +5,6 @@ surfacecount,28
 homeurl,https://raw.githubusercontent.com/DragonMoth28/The_Escort/Ukagaka/
 update_result,OK(0)
 firstboot,763500558
-update_time,763601830
+update_time,763603386
 commitmemorysize,9007178
-lastboot,763603073
+lastboot,763604409

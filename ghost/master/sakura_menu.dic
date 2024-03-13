@@ -126,7 +126,8 @@ OnLocation
 
 OnShellChange : all //i have a headache
 {
-	"\t(The Escort looks over at you, a bit more curious)"
+	"\t\_q"
+	"(The Escort looks over at you, a bit more curious)"
 		"\n\n"
 		if nowshell == "Fish" || nowshell == "Void Worm"
 		{
