@@ -73,7 +73,7 @@ OnUpdateComplete
 	}
 	else
 	{
-		"\0\s[0](A possible update?)"
+		"\0\s[0](Complete~ Enjoy your updated Void Cryptid!)"
 	}
 }
 
